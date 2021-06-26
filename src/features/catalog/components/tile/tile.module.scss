@@ -1,0 +1,40 @@
+@import "styles/mixins";
+
+.wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover .background {
+    background-color: lighten(gray, 20%);
+  }
+
+  &.active {
+    z-index: 2;
+
+    .background {
+      background-color: lighten(gray, 30%);
+      transform: scale(1.2);
+    }
+  }
+}
+
+.content {
+  @include fill;
+
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  @include fill;
+
+  background-color: gray;
+  transition: all .1s;
+  border-radius: 4px;
+  z-index: -1;
+}
+
