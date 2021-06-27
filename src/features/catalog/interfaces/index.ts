@@ -8,7 +8,6 @@ export interface IItemsStore {
   isSelectedItem(id: ItemType['id']): boolean;
   setItems(items: ItemsType): void;
   setSelected(items: ItemType['id']): void;
-  fetchItems(): Promise<void>;
 }
 
 export interface IUIStore {
