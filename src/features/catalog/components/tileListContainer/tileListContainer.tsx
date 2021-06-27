@@ -1,17 +1,16 @@
 import {observer} from 'mobx-react-lite';
 import {TileList} from 'features/catalog/components/tileList/tileList';
 import {isNonEmptyArray} from 'types/utils';
-import {ReactElement, useEffect} from 'react';
-import {useUI} from 'features/catalog/hooks/useUI';
-import {useItems} from 'features/catalog/hooks/useItems';
+import {ReactElement} from 'react';
+import {useItemsStore, useUiSettingsStore} from 'features/catalog/hooks';
 
 type PropsType = {
   emptyElement: ReactElement;
 };
 
 export const TileListContainer = observer<PropsType>(({emptyElement}) => {
-  const {columns} = useUI();
-  const {items} = useItems();
+  const {columns} = useUiSettingsStore();
+  const {items} = useItemsStore();
 
   return isNonEmptyArray(items) ? (
     <TileList items={items} columns={columns} />

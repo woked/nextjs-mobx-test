@@ -16,3 +16,8 @@ export interface IUIStore {
 
   setColumns(columns: number): void;
 }
+
+export interface IStateType {
+  uiSettingsStore: IUIStore;
+  itemsStore: IItemsStore;
+}

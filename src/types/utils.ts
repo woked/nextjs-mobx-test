@@ -1,4 +1,8 @@
 export type Maybe<T> = T | null;
+export const isExist = <T>(data: Maybe<T>): data is T => {
+  return Boolean(data);
+};
+
 export enum Status {
   fulfilled,
   pending,
