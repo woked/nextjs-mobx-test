@@ -17,7 +17,10 @@
     "paths": {
       "features/*": ["src/features/*"],
       "libs/*": ["src/libs/*"],
-      "types/*": ["src/types/*"]
+      "store/*": ["src/store/*"],
+      "constants/*": ["src/constants/*"],
+      "types/*": ["src/types/*"],
+      "api/*": ["src/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

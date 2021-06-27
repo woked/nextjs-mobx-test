@@ -4,8 +4,6 @@ module.exports = {
     'next',
     'next/core-web-vitals',
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
 };
