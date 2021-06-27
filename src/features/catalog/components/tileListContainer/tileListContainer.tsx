@@ -11,11 +11,7 @@ type PropsType = {
 
 export const TileListContainer = observer<PropsType>(({emptyElement}) => {
   const {columns} = useUI();
-  const {items, fetchItems} = useItems();
-
-  useEffect(() => {
-    fetchItems();
-  }, []);
+  const {items} = useItems();
 
   return isNonEmptyArray(items) ? (
     <TileList items={items} columns={columns} />
