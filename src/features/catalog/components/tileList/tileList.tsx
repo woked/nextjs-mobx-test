@@ -13,7 +13,7 @@ type PropsType = {
 };
 
 export const TileList: FC<PropsType> = ({className, items, columns}) => {
-  const style = {width: `calc(100% / ${columns})`};
+  const style = {width: `${100 / columns}%`};
 
   return (
     <div className={classNames(s.wrap, className)}>
