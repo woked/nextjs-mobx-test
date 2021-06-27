@@ -32,6 +32,7 @@
 .background {
   @include fill;
 
+  will-change: transform;
   background-color: gray;
   transition: all .1s;
   border-radius: 4px;
