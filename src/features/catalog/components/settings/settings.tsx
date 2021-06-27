@@ -18,7 +18,7 @@ export const Settings: FC<PropsType> = ({
       value={currentColumns}
       onChange={(e) => onChange(Number(e.target.value))}>
       {Array.from(
-        {length: maxColumns - minColumns},
+        {length: maxColumns - minColumns + 1},
         (_, i) => i + minColumns,
       ).map((col) => {
         return (
