@@ -1,5 +1,5 @@
 import {Settings} from 'features/catalog/components/settings/settings';
-import {useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
 import {observer} from 'mobx-react-lite';
 import {TileListContainer} from 'features/catalog/components/tileListContainer/tileListContainer';
 import {Context} from 'features/catalog/context';
@@ -18,6 +18,13 @@ const Catalog = observer<CatalogPropsType>(({minColumns, maxColumns}) => {
 
   const emptyElement = useMemo(() => <span>List of items is empty</span>, []);
 
+  const setColumnsCallback = useCallback(
+    (columns: number) => {
+      setColumns(columns, true);
+    },
+    [setColumns],
+  );
+
   return (
     <>
       <div className={s.settings}>
@@ -25,7 +32,7 @@ const Catalog = observer<CatalogPropsType>(({minColumns, maxColumns}) => {
           minColumns={minColumns}
           maxColumns={maxColumns}
           currentColumns={columns}
-          onChange={setColumns}
+          onChange={setColumnsCallback}
         />
       </div>
       <TileListContainer emptyElement={emptyElement} />

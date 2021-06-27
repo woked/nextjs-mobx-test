@@ -13,7 +13,7 @@ export interface IItemsStore {
 export interface IUIStore {
   columns: number;
 
-  setColumns(columns: number): void;
+  setColumns(columns: number, persist?: boolean): void;
 }
 
 export interface IStateType {
