@@ -8,10 +8,12 @@ import {IStateType} from 'features/catalog/interfaces';
 
 import s from './index.module.scss';
 
-const MIN_COLUMNS = 1;
-const MAX_COLUMNS = 7;
+type CatalogPropsType = {
+  minColumns: number;
+  maxColumns: number;
+};
 
-const Catalog = observer(() => {
+const Catalog = observer<CatalogPropsType>(({minColumns, maxColumns}) => {
   const {columns, setColumns} = useUiSettingsStore();
 
   const emptyElement = useMemo(() => <span>List of items is empty</span>, []);
@@ -20,8 +22,8 @@ const Catalog = observer(() => {
     <>
       <div className={s.settings}>
         <Settings
-          minColumns={MIN_COLUMNS}
-          maxColumns={MAX_COLUMNS}
+          minColumns={minColumns}
+          maxColumns={maxColumns}
           currentColumns={columns}
           onChange={setColumns}
         />
@@ -31,14 +33,21 @@ const Catalog = observer(() => {
   );
 });
 
-type PropsType = IStateType;
+type PropsType = IStateType & CatalogPropsType;
 
-export const CatalogContainer = observer<PropsType>((state) => {
-  return (
-    <Context.Provider value={state}>
-      <Catalog />
-    </Context.Provider>
-  );
-});
+export const CatalogContainer = observer<PropsType>(
+  ({itemsStore, uiSettingsStore, ...props}) => {
+    const state = useMemo(
+      () => ({itemsStore, uiSettingsStore}),
+      [itemsStore, uiSettingsStore],
+    );
+
+    return (
+      <Context.Provider value={state}>
+        <Catalog {...props} />
+      </Context.Provider>
+    );
+  },
+);
 
 export default CatalogContainer;

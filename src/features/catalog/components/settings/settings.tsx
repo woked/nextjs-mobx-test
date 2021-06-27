@@ -17,15 +17,16 @@ export const Settings: FC<PropsType> = ({
     <select
       value={currentColumns}
       onChange={(e) => onChange(Number(e.target.value))}>
-      {Array.from({length: maxColumns - minColumns}, (_, i) => i + 1).map(
-        (col) => {
-          return (
-            <option key={col} value={col}>
-              {col}
-            </option>
-          );
-        },
-      )}
+      {Array.from(
+        {length: maxColumns - minColumns},
+        (_, i) => i + minColumns,
+      ).map((col) => {
+        return (
+          <option key={col} value={col}>
+            {col}
+          </option>
+        );
+      })}
     </select>
   );
 };
